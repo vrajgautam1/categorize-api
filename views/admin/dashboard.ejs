@@ -1,0 +1,93 @@
+<%- include ("./partials/header.ejs") %>
+  <!-- ============================================================== -->
+  <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+  <!-- ============================================================== -->
+  <!-- ============================================================== -->
+  <!-- Page wrapper  -->
+  <!-- ============================================================== -->
+  <div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+      <h3>Categories</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% categories.forEach(cat=> { %>
+            <tr>
+              <td>
+                <%= cat.name %>
+              </td>
+              <td><img src="/uploads/<%= cat.image %>" width="80" /></td>
+              <td><a href="/admin/deleteCategory/<%= cat._id %>" class="btn btn-danger">Delete</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+
+      <h3>Sub-Categories</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% subCategories.forEach(sub=> { %>
+            <tr>
+              <td>
+                <%= sub.name %>
+              </td>
+              <td><img src="/uploads/<%= sub.image %>" width="80" /></td>
+              <td><a href="/admin/deleteSubCategory/<%= sub._id %>" class="btn btn-danger">Delete</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+
+      <h3>Extra-Categories</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% extraCategories.forEach(extra=> { %>
+            <tr>
+              <td>
+                <%= extra.name %>
+              </td>
+              <td><img src="/uploads/<%= extra.image %>" width="80" /></td>
+              <td><a href="/admin/deleteExtraCategory/<%= extra._id %>" class="btn btn-danger">Delete</a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <%- include ("./partials/footer.ejs") %>

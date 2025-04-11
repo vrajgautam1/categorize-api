@@ -1,0 +1,260 @@
+<%- include("./partials/header.ejs") %>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Form Basic</h4>
+                    <div class="ms-auto text-end">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Library
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Start Page Content -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="card">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#cat" role="tab"
+                                    aria-selected="true">
+                                    <span class="hidden-xs-down">Add Category</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#subcat" role="tab"
+                                    aria-selected="false">
+                                    <span class="hidden-xs-down">Add Sub-Category</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#excat" role="tab" aria-selected="false">
+                                    <span class="hidden-xs-down">Add Extra-Category</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content tabcontent-border">
+
+                            <!-- Category -->
+                            <div class="tab-pane p-20 active" id="cat" role="tabpanel">
+                                <form method="post" action="/admin/addCategory" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label class="form-label">Category Name</label>
+                                        <input type="text" name="name" class="form-control" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Category Image</label>
+                                        <input type="file" name="image" class="form-control" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Category</button>
+                                </form>
+                            </div>
+
+                            <!-- Sub-Category -->
+                            <div class="tab-pane p-20" id="subcat" role="tabpanel">
+                                <form method="post" action="/admin/addSubCategory" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label class="form-label">Sub-Category Name</label>
+                                        <input type="text" name="name" class="form-control" required>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Sub-Category Image</label>
+                                        <input type="file" name="image" class="form-control" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Category</label>
+                                        <select name="categoryId" class="form-select" required>
+                                            <% categories.forEach(function(category) { %>
+                                                <option value="<%= category._id %>">
+                                                    <%= category.name %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Add Sub-Category</button>
+                                </form>
+                            </div>
+
+                            <!-- Extra-Category -->
+
+                            <div class="tab-pane p-20" id="excat" role="tabpanel">
+                                <form method="post" action="/admin/addExtraCategory" enctype="multipart/form-data">
+                                    <div class="mb-3">
+                                        <label class="form-label">Extra-Category Name</label>
+                                        <input type="text" name="name" class="form-control" >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Extra-Category Image</label>
+                                        <input type="file" name="image" class="form-control" >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Category</label>
+                                        <select name="categoryId" class="form-select" required>
+                                            <% categories.forEach(function(category) { %>
+                                                <option value="<%= category._id %>">
+                                                    <%= category.name %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Select Sub-Category</label>
+                                        <select name="subCategoryId" class="form-select" required>
+                                            <% subCategories.forEach(function(sub) { %>
+                                                <option value="<%= sub._id %>">
+                                                    <%= sub.name %>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Add Extra-Category</button>
+                                </form>                             
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+
+            </div>
+            <!-- editor -->
+
+            <!-- ============================================================== -->
+            <!-- End PAge Content -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Right sidebar -->
+            <!-- ============================================================== -->
+            <!-- .right-sidebar -->
+            <!-- ============================================================== -->
+            <!-- End Right sidebar -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="/assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="/dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="/dist/js/custom.min.js"></script>
+    <!-- This Page JS -->
+    <script src="/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+    <script src="/dist/js/pages/mask/mask.init.js"></script>
+    <script src="/assets/libs/select2/dist/js/select2.full.min.js"></script>
+    <script src="/assets/libs/select2/dist/js/select2.min.js"></script>
+    <script src="/assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
+    <script src="/assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
+    <script src="/assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
+    <script src="/assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="/assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+    <script src="/assets/libs/quill/dist/quill.min.js"></script>
+    <script>
+        //***********************************//
+        // For select 2
+        //***********************************//
+        $(".select2").select2();
+
+        /*colorpicker*/
+        $(".demo").each(function () {
+            //
+            // Dear reader, it's actually very easy to initialize MiniColors. For example:
+            //
+            //  $(selector).minicolors();
+            //
+            // The way I've done it below is just for the demo, so don't get confused
+            // by it. Also, data- attributes aren't supported at this time.they're
+            // only used for this demo.
+            //
+            $(this).minicolors({
+                control: $(this).attr("data-control") || "hue",
+                position: $(this).attr("data-position") || "bottom left",
+
+                change: function (value, opacity) {
+                    if (!value) return;
+                    if (opacity) value += ", " + opacity;
+                    if (typeof console === "object") {
+                        console.log(value);
+                    }
+                },
+                theme: "bootstrap",
+            });
+        });
+        /*datwpicker*/
+        jQuery(".mydatepicker").datepicker();
+        jQuery("#datepicker-autoclose").datepicker({
+            autoclose: true,
+            todayHighlight: true,
+        });
+        var quill = new Quill("#editor", {
+            theme: "snow",
+        });
+    </script>
+
+    <%- include("./partials/footer.ejs") %>
+        </body>
+
+        </html>
