@@ -1,44 +1,44 @@
-🛒 Categorized E-commerce App (MongoDB + .populate)
-📌 Description
-This project is focused on learning categorization in MongoDB using the .populate() method to simulate table joins. It demonstrates how to build relationships between Categories (e.g., Electronics), Subcategories (e.g., Mobiles), and Extra Categories (e.g., Oppo Phones).
+# 🛒 Categorized E-commerce App (MongoDB + .populate)
 
-To make the learning more practical, the project is built like a mini e-commerce website, divided into:
+## 📌 Description  
+This project is focused on **learning categorization in MongoDB** using the `.populate()` method to simulate table joins. It demonstrates how to build relationships between:
 
-Client Side – Public-facing site visible to users.
+- **Categories** (e.g., Electronics)
+- **Subcategories** (e.g., Mobiles)
+- **Extra Categories** (e.g., Oppo Phones)
 
-Admin Side – A protected section for managing categories, accessible via /admin/dashboard.
+To make the concept practical, the project is structured as a basic **e-commerce app** with two sections:
 
-🛠 Libraries/Technologies Used
-MongoDB + Mongoose – For database and .populate() operations
+- **Client Side** – Public-facing site visible to all users
+- **Admin Side** – Protected route for management, accessible at `/admin/dashboard` using Passport.js authentication
 
-Express.js – Backend framework
+File uploads are handled using **Multer**, and the frontend uses **EJS**, **Bootstrap**, and **Vanilla JavaScript** for rendering dynamic content and interactivity.
 
-EJS – Template engine for rendering dynamic HTML
+---
 
-Passport.js – For route protection & login
+## 🛠 Libraries/Technologies Used  
+- MongoDB + Mongoose  
+- Express.js  
+- EJS (Embedded JavaScript Templates)  
+- Passport.js  
+- Multer  
+- Bootstrap 5  
+- JavaScript  
 
-Multer – For handling image/file uploads
+---
 
-Bootstrap 5 – For styling the frontend
+## 🌐 Live Link  
+👉 [View Live Demo](https://your-live-link.com)
 
-JavaScript – For frontend interactivity
+---
 
-🌐 Live Link
-👉 Live Demo
+## 🖼️ Screenshots  
 
-🖼️ Screenshots
-🔹 Client Side
+### 🔹 Client Side  
+![Client Homepage](screenshots/client-homepage.png)
 
-🔹 Admin Dashboard (Protected)
+### 🔹 Admin Dashboard (Protected)  
+![Admin Dashboard](screenshots/admin-dashboard.png)
 
-🔹 Add Category Page
-
-Let me know when you upload your site or want help taking the screenshots!
-
-
-
-
-
-
-
-
+### 🔹 Add Category Page  
+![Add Category](screenshots/add-category.png)
