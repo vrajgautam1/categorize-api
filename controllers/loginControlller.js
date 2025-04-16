@@ -1,17 +1,17 @@
 const Admin = require("../models/adminModel");
 
 // GET - Show registration form
-exports.showRegister = (req, res) => {
-    res.render("register"); // views/register.ejs
+module.exports.showRegister = (req, res) => {
+    return res.render("login/register"); // views/register.ejs
 };
 
 // POST - Handle registration form submit
-exports.registerAdmin = async (req, res) => {
+module.exports.registerAdmin = async (req, res) => {
     try {
         const { username, email, password } = req.body;
 
-        const newAdmin = new Admin({ username, email, password });
-        await newAdmin.save();
+        const newAdmin = { username, email, password };
+        await Admin.create(newAdmin); // Save new admin to the database
 
         res.redirect("/login"); // redirect to login after successful registration
     } catch (err) {
@@ -21,6 +21,6 @@ exports.registerAdmin = async (req, res) => {
 };
 
 // GET - Show login form
-exports.showLogin = (req, res) => {
-    res.render("login"); // views/login.ejs
+module.exports.showLogin = (req, res) => {
+    res.render("login/login.ejs"); // views/login.ejs
 };

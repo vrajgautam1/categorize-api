@@ -16,4 +16,7 @@ router.use("/admin", adminRouter);
 const clientRouter = require("./clientRouter");
 router.use(clientRouter);
 
+const loginRouter = require("./loginRouter");
+router.use(loginRouter);
+
 module.exports = router;

@@ -14,13 +14,13 @@ db();
 // View Engine
 app.set("view engine", "ejs");
 app.set("views", "views");
-
+app.use(bodyParser.urlencoded({ extended: true }));
 // Static Files
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 // Middlewares
 app.use(

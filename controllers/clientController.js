@@ -27,7 +27,7 @@ exports.getSinglePage = async (req, res) => {
       return res.status(404).send("Product not found");
     }
 
-    res.render("singlePage", { product });
+    res.render("client/singlePage.ejs", { product });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
