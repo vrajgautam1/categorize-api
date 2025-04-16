@@ -35,10 +35,11 @@ File uploads are handled using **Multer**, and the frontend uses **EJS**, **Boot
 ## 🖼️ Screenshots  
 
 ### 🔹 Client Side  
-![Client Homepage](screenshots/client-homepage.png)
+![Client Homepage](./screenshots/hompageecom.png)
+![Client single page](./screenshots/singlepage.png)
 
 ### 🔹 Admin Dashboard (Protected)  
-![Admin Dashboard](screenshots/admin-dashboard.png)
+![Admin Dashboard](./screenshots/admin%20dashboard.png)
 
 ### 🔹 Add Category Page  
-![Add Category](screenshots/add-category.png)
+![Add Category](./screenshots/formcat.png)
