@@ -46,5 +46,4 @@ module.exports.authenticateAdmin = (req, res, next) => {
   res.redirect("/login");
 };
 
-module.exports = passport;
-
+module.exports.passport = passport;

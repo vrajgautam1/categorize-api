@@ -1,4 +1,5 @@
 const Admin = require("../models/adminModel");
+const passport = require("../middlewares/passportLocal").passport;
 
 // GET - Show registration form
 module.exports.showRegister = (req, res) => {
@@ -24,3 +25,10 @@ module.exports.registerAdmin = async (req, res) => {
 module.exports.showLogin = (req, res) => {
     res.render("login/login.ejs"); // views/login.ejs
 };
+
+
+
+exports.loginAdmin = passport.authenticate("local", {
+  successRedirect: "/admin/dashboard",
+  failureRedirect: "/login",
+});

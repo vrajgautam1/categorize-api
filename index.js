@@ -1,48 +1,44 @@
+const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const express = require("express");
 const session = require("express-session");
 const passport = require("passport");
 const db = require("./configs/dbconnection");
-const initializePassport = require("./middlewares/passportLocal");
+require("./middlewares/passportLocal"); // just run the file to configure passport
 
 const app = express();
 
-// DB Connect
+// Connect to DB
 db();
 
 // View Engine
 app.set("view engine", "ejs");
 app.set("views", "views");
+
+// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-// Static Files
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-
-
-
-// Middlewares
 app.use(
-    session({
-        secret: "yourSecretKey",
-        resave: false,
-        saveUninitialized: false,
-    })
+  session({
+    secret: "yourSecretKey",
+    resave: false,
+    saveUninitialized: false,
+  })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-initializePassport(passport);
 
-
+// Routes
 const mainRouter = require("./routers/index");
 app.use(mainRouter);
 
-
+// Start Server
 app.listen(process.env.PORT || 3000, (err) => {
-    if (!err) {
-        console.log("Server is running");
-        console.log("http://localhost:" + (process.env.PORT || 3000));
-    }
+  if (!err) {
+    console.log("Server is running");
+    console.log("http://localhost:" + (process.env.PORT || 3000));
+  }
 });
