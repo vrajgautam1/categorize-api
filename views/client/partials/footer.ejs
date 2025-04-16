@@ -1,0 +1,60 @@
+
+  <!-- Footer -->
+  <footer class="bg-light text-center text-muted py-3 mt-auto">
+    <div class="container">
+      <small>&copy; 2025 Your Website</small>
+    </div>
+  </footer>
+
+  <!-- Hover Behavior -->
+  <script>
+    document.querySelectorAll('.dropdown-subitem').forEach(item => {
+      item.addEventListener('mouseenter', function () {
+        const extraDropdown = this.querySelector('.extra-dropdown');
+        if (!extraDropdown) return;
+
+        // Reset any previous direction
+        extraDropdown.style.left = '100%';
+        extraDropdown.style.right = 'auto';
+
+        // Show temporarily to measure
+        extraDropdown.style.display = 'block';
+        extraDropdown.style.visibility = 'hidden';
+
+        const rect = extraDropdown.getBoundingClientRect();
+
+        // If going off screen right, flip to left
+        if (rect.right > window.innerWidth) {
+          extraDropdown.style.left = 'auto';
+          extraDropdown.style.right = '100%';
+        }
+
+        // Show properly
+        extraDropdown.style.visibility = 'visible';
+      });
+
+      // Optional: hide on mouse leave if needed
+      item.addEventListener('mouseleave', function () {
+        const extraDropdown = this.querySelector('.extra-dropdown');
+        if (extraDropdown) {
+          extraDropdown.style.display = 'none';
+        }
+      });
+
+      // Always show it again on hover
+      item.addEventListener('mouseenter', function () {
+        const extraDropdown = this.querySelector('.extra-dropdown');
+        if (extraDropdown) {
+          extraDropdown.style.display = 'block';
+        }
+      });
+    });
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>

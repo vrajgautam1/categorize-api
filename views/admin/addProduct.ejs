@@ -110,39 +110,39 @@
 
                             <div class="tab-pane p-20" id="excat" role="tabpanel">
                                 <form method="post" action="/admin/addExtraCategory" enctype="multipart/form-data">
-                                    <div class="mb-3">
-                                        <label class="form-label">Extra-Category Name</label>
-                                        <input type="text" name="name" class="form-control" >
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Extra-Category Image</label>
-                                        <input type="file" name="image" class="form-control" >
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Select Category</label>
-                                        <select name="categoryId" class="form-select" required>
-                                            <% categories.forEach(function(category) { %>
-                                                <option value="<%= category._id %>">
-                                                    <%= category.name %>
-                                                </option>
-                                                <% }) %>
-                                        </select>
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Select Sub-Category</label>
-                                        <select name="subCategoryId" class="form-select" required>
-                                            <% subCategories.forEach(function(sub) { %>
-                                                <option value="<%= sub._id %>">
-                                                    <%= sub.name %>
-                                                </option>
-                                                <% }) %>
-                                        </select>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Add Extra-Category</button>
-                                </form>                             
-                            </div>
+                                  
+                                  <div class="mb-3">
+                                    <label class="form-label">Extra-Category Name</label>
+                                    <input type="text" name="name" class="form-control">
+                                  </div>
+                              
+                                  <div class="mb-3">
+                                    <label class="form-label">Extra-Category Image</label>
+                                    <input type="file" name="image" class="form-control">
+                                  </div>
+                              
+                                  <div class="mb-3">
+                                    <label class="form-label">Select Category</label>
+                                    <select name="categoryId" id="categorySelect" class="form-select" required>
+                                      <% categories.forEach(function(category) { %>
+                                        <option value="<%= category._id %>"><%= category.name %></option>
+                                      <% }) %>
+                                    </select>
+                                  </div>
+                              
+                                  <div class="mb-3">
+                                    <label class="form-label">Select Sub-Category</label>
+                                    <select name="subCategoryId" id="subCategorySelect" class="form-select" required>
+                                      <% subCategories.forEach(function(sub) { %>
+                                        <option value="<%= sub._id %>" data-category="<%= sub.categoryId %>"><%= sub.name %></option>
+                                      <% }) %>
+                                    </select>
+                                  </div>
+                              
+                                  <button type="submit" class="btn btn-primary">Add Extra-Category</button>
+                                </form>
+                              </div>
+                              
 
                         </div>
                     </div>
@@ -255,6 +255,35 @@
     </script>
 
     <%- include("./partials/footer.ejs") %>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const categorySelect = document.getElementById("categorySelect");
+          const subCategorySelect = document.getElementById("subCategorySelect");
+      
+          function filterSubCategories() {
+            const selectedCategoryId = categorySelect.value;
+      
+            Array.from(subCategorySelect.options).forEach(option => {
+              if (option.dataset.category === selectedCategoryId) {
+                option.style.display = "block";
+              } else {
+                option.style.display = "none";
+              }
+            });
+      
+            // Reset selection
+            subCategorySelect.selectedIndex = 0;
+          }
+      
+          // Initial filter on page load
+          filterSubCategories();
+      
+          // Filter when category changes
+          categorySelect.addEventListener("change", filterSubCategories);
+        });
+      </script>
+      
         </body>
 
         </html>

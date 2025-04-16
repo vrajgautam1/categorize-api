@@ -1,0 +1,109 @@
+<%- include("./partials/header.ejs") %>
+
+  <!-- Main Content -->
+  <main class="py-5">
+    <!-- Category Bar -->
+    <!-- Category Grid Bar -->
+    <div class="category-bar d-grid border-bottom bg-white p-3">
+      <% categories.forEach(cat=> { %>
+        <div class="dropdown category-item text-center position-relative d-inline-block mx-2">
+          <img src="uploads/<%= cat.image %>" alt="<%= cat.name %>" class="img-fluid"
+            style="width: 60px; height: 60px; object-fit: contain;">
+          <div class="mt-1 fw-medium text-dark" style="font-size: 14px;">
+            <%= cat.name %> <i class="bi bi-caret-down-fill"></i>
+          </div>
+
+          <!-- Subcategories dropdown -->
+          <div class="dropdown-menu subcategory-menu position-absolute shadow">
+            <% subcategories.forEach(sub=> {
+              if (sub.categoryId.toString() === cat._id.toString()) { %>
+              <div class="dropdown-subitem position-relative">
+                <img src="uploads/<%= sub.image %>" alt="<%= sub.name %>" class="me-2"
+                  style="width: 25px; height: 25px; object-fit: contain;">
+                <%= sub.name %>
+
+                  <!-- ExtraCategories dropdown on hover -->
+                  <div class="extra-dropdown shadow">
+                    <% extracategories.forEach(extra=> {
+                      if (extra.subCategoryId.toString() === sub._id.toString()) { %>
+                      <div class="dropdown-extraitem">
+                        <img src="uploads/<%= extra.image %>" alt="<%= extra.name %>" class="me-2"
+                          style="width: 20px; height: 20px; object-fit: contain;">
+                        <%= extra.name %>
+                      </div>
+                      <% } }) %>
+                  </div>
+              </div>
+              <% } }) %>
+          </div>
+        </div>
+        <% }) %>
+    </div>
+
+
+
+    
+    
+
+    <!-- Crousal Section -->
+
+    <div class="container my-5">
+      <div id="sliderExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <a href="https://www.flipkart.com/travel/flights?param=TravelDT-HPW-Airasia-dontmiss-booknow">
+              <img src="https://rukminim2.flixcart.com/fk-p-flap/1010/170/image/b03409919baf3392.jpg?q=90"
+                class="d-block w-100" alt="Flight Offer">
+            </a>
+          </div>
+
+          <div class="carousel-item">
+            <a
+              href="/furniture/sofas/sofa-sets/pr?sid=wwe%2Cc3z%2Cr0c&amp;p%5B%5D=facets.price_range.from%3D7499&amp;p%5B%5D=facets.price_range.to%3DMax">
+              <img src="https://rukminim2.flixcart.com/fk-p-flap/1010/170/image/1558a721300c7f6d.jpg?q=90"
+                class="d-block w-100" alt="Sofa Set">
+            </a>
+          </div>
+
+          <div class="carousel-item">
+            <a
+              href="/furniture/beds-more/beds/pr?sid=wwe%2C7p7%2C4yf&amp;p%5B%5D=facets.price_range.from%3D8999&amp;p%5B%5D=facets.price_range.to%3DMax">
+              <img src="https://rukminim2.flixcart.com/fk-p-flap/1010/170/image/7850424b771b8f98.jpg?q=90"
+                class="d-block w-100" alt="Beds Offer">
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Optional controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#sliderExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#sliderExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- extracategory card section -->
+    <div class="container my-4">
+      <div class="five-grid">
+        <% extracategories.forEach(extra => { %>
+          <a href="/singlePage/<%= extra._id %>" class="text-decoration-none text-dark">
+            <div class="card shadow-sm p-2 h-100">
+              <img src="uploads/<%= extra.image %>" alt="<%= extra.name %>" class="mx-auto mb-2" style="height: 100px; object-fit: contain;">
+              <div class="card-body p-2">
+                <h6 class="card-title mb-0" style="font-size: 14px;"><%= extra.name %></h6>
+              </div>
+            </div>
+          </a>
+        <% }) %>
+      </div>
+    </div>
+
+    </div>
+
+  </main>
+
+  <%- include("./partials/footer.ejs") %>

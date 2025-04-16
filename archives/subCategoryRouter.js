@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const subCategoryController = require("../controllers/subCategoryController");
+const subCategoryController = require("./subCategoryController");
 const upload = require("../middlewares/multerMiddleware");
 
 router.get("/viewCategories", subCategoryController.viewSubCategories);
