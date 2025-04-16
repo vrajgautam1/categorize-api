@@ -28,7 +28,7 @@ File uploads are handled using **Multer**, and the frontend uses **EJS**, **Boot
 ---
 
 ## 🌐 Live Link  
-👉 [View Live Demo](https://your-live-link.com)
+👉 [View Live Demo](https://categorize-api-9kfk.onrender.com)
 
 ---
 
